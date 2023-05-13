@@ -161,6 +161,21 @@ map ci push ca<c-a> # at the very beginning
 map ca rename # before extention.
 map ce push ca<right> # after extension. 
 map cA push ca<c-e> # at the very end.
+
+# fuzzy finding
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ] ; then
+        cmd="cd"
+    elif [ -f "$res" ] ; then
+        cmd="select"
+    else
+        exit 0
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map f :fzf_jump
+
 # setting icons for lf
 set icons
 # setting previewer
