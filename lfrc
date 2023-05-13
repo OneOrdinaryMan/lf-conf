@@ -176,6 +176,19 @@ cmd fzf_jump ${{
 }}
 map f :fzf_jump
 
+# Setting up zoxide
+cmd z %{{
+	result="$(zoxide query --exclude $PWD $@)"
+	lf -remote "send $id cd $result"
+}}
+
+cmd zi ${{
+	result="$(zoxide query -i)"
+	lf -remote "send $id cd $result"
+}}
+
+map cd :zi
+map cD push :cd<space>
 # setting icons for lf
 set icons
 # setting previewer
