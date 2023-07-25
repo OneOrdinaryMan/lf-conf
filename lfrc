@@ -110,6 +110,13 @@ map a :push %mkdir<space>""<left>
 # map <delete> trash
  map dD delete
 
+# Using ripdrag for drag and drop feature.
+cmd drag_and_drop ${{
+    ripdrag -rax $fx
+}}
+
+# map dr for drag_and_drop
+map dr drag_and_drop
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
